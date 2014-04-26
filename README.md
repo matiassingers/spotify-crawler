@@ -1,6 +1,8 @@
 # spotify-crawler
 > Returns pricing data for all available Spotify countries
 
+[![NPM version](https://badge.fury.io/js/spotify-crawler.svg)](https://www.npmjs.org/package/spotify-crawler)
+
 Crawls the [list](https://www.spotify.com/select-your-country/) of countries where Spotify is available. 
 Fetches the listed premium price for each country and finally converts the price into USD.
 
