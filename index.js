@@ -84,6 +84,7 @@ function getCountryData(code){
       return {
         currency: data.currency,
         originalCurrency: data.originalCurrency,
+        countryCode: data.alpha3Code,
         internationalName: data.name,
         region: data.region,
         subRegion: data.subregion,

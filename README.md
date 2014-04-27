@@ -43,6 +43,7 @@ The `country` object consists of:
 - `rel` - stripped the `originalRel` of the language(*be-fr*)
 - `currency` - the currency code from [restcoutries.eu](http://restcountries.eu/), but corrected for the countries that doesn't display price in their own currency on the website.
 - `originalCurrency` - the raw currency code from [restcoutries.eu](http://restcountries.eu/).
+- `countryCode` - the [`alpha3Code`](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) from [restcoutries.eu](http://restcountries.eu/).
 - `internationalName` - the international name from  [restcoutries.eu](http://restcountries.eu/).
 - `region` - the region from [restcoutries.eu](http://restcountries.eu/).
 - `subRegion` - the subregion from [restcoutries.eu](http://restcountries.eu/).
@@ -60,6 +61,7 @@ The `country` object consists of:
     "rel": "au",
     "currency": "AUD",
     "originalCurrency": "AUD",
+    "countryCode": "AUS",
     "internationalName": "Australia",
     "region": "Oceania",
     "subRegion": "Australia and New Zealand",
