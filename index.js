@@ -99,7 +99,7 @@ function getCountryCurrencyCode(data){
     throw error;
   }
 
-  var code = data.alpha2Code;
+  var code = data.alpha2Code.toLowerCase();
   var currency;
   // Handle Switzerland
   if(code === "ch")
