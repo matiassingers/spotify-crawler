@@ -42,6 +42,11 @@ The `country` object consists of:
 - `originalRel` - the rel directly from Spotify
 - `rel` - stripped the `originalRel` of the language(*be-fr*)
 - `currency` - the currency code from [restcoutries.eu](http://restcountries.eu/), but corrected for the countries that doesn't display price in their own currency on the website.
+- `originalCurrency` - the raw currency code from [restcoutries.eu](http://restcountries.eu/).
+- `internationalName` - the international name from  [restcoutries.eu](http://restcountries.eu/).
+- `region` - the region from [restcoutries.eu](http://restcountries.eu/).
+- `subRegion` - the subregion from [restcoutries.eu](http://restcountries.eu/).
+- `demonym` - the demonym from [restcoutries.eu](http://restcountries.eu/).
 - `originalPrice` - the whole text from the HTML element
 - `price` - strip all text from `originalPrice`
 - `convertedPrice` - local price converted into USD with rate from [Open Exchange Rates](https://openexchangerates.org/)
@@ -49,14 +54,18 @@ The `country` object consists of:
 #### Output data example for a single country:
 ```json
 {
-    "link": "/uk/",
-    "title": "United Kingdom",
-    "originalRel": "uk",
-    "rel": "gb",
-    "currency": "GBP",
-    "originalPrice": "£9.99 per month",
-    "price": "9.99",
-    "convertedPrice": 16.784894602959113
+    "link": "/au/",
+    "title": "Australia",
+    "originalRel": "au",
+    "rel": "au",
+    "currency": "AUD",
+    "originalCurrency": "AUD",
+    "internationalName": "Australia",
+    "region": "Oceania",
+    "subRegion": "Australia and New Zealand",
+    "demonym": "Australian",
+    "originalPrice": "$11.99 per month",
+    "price": "11.99"
 }
 ```
 
