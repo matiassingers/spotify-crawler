@@ -52,12 +52,12 @@ function handleSingleCountry(elem, callback){
   if(country.rel === 'uk')
     country.rel = 'gb';
 
-  var currencyCode = getCountryCurrencyCode(country.rel);
+  var extraCountryData = getCountryData(country.rel);
   var spotifyPrice = getSpotifyPrice(country.link).then(formatSpotifyPrice);
 
-  when.all([currencyCode, spotifyPrice])
+  when.all([extraCountryData, spotifyPrice])
     .then(function(data){
-      country.currency = data[0];
+      country = _.extend(country, data[0]);
 
       var spotify = data[1];
       country.originalPrice = spotify.original;
@@ -74,39 +74,56 @@ function handleSingleCountry(elem, callback){
     });
 }
 
-function getCountryCurrencyCode(code){
+
+function getCountryData(code){
   var url = "http://restcountries.eu/rest/v1/alpha/" + code;
 
   return request(url, true)
+    .then(getCountryCurrencyCode)
     .then(function(data){
-      if(!data.currencies){
-        var error = new Error('{0} is missing currency data'.format(code));
-        error.res = data;
-        throw error;
-      }
-
-      if(data.currencies && data.currencies.length)
-      // Handle Switzerland
-        if(code === "ch")
-          return "CHF";
-
-      // Handle Chile
-      if(code === "cl")
-        return "CLP";
-
-      // Handle all countries using EUR
-      var countriesUsingEUR = ["hu", "is", "cz", "lt", "bg"];
-      if(_.contains(countriesUsingEUR, code))
-        return "EUR";
-
-
-      // Handle all countries displaying price in USD
-      var countriesUsingUSD = ["uy", "py", "cr", "do", "ni", "hn", "sv", "gt", "bo"];
-      if(_.contains(countriesUsingUSD, code))
-        return "USD";
-
-      return data.currencies[0];
+      return {
+        currency: data.currency,
+        originalCurrency: data.originalCurrency,
+        internationalName: data.name,
+        region: data.region,
+        subRegion: data.subregion,
+        demonym: data.demonym
+      };
     });
+}
+
+function getCountryCurrencyCode(data){
+  if(!data.currencies){
+    var error = new Error('{0} is missing currency data'.format(code));
+    error.res = data;
+    throw error;
+  }
+
+  var code = data.alpha2Code;
+  var currency;
+  // Handle Switzerland
+  if(code === "ch")
+    currency = "CHF";
+
+  // Handle Chile
+  if(code === "cl")
+    currency = "CLP";
+
+  // Handle all countries using EUR
+  var countriesUsingEUR = ["hu", "is", "cz", "lt", "bg"];
+  if(_.contains(countriesUsingEUR, code))
+    currency = "EUR";
+
+
+  // Handle all countries displaying price in USD
+  var countriesUsingUSD = ["uy", "py", "cr", "do", "ni", "hn", "sv", "gt", "bo"];
+  if(_.contains(countriesUsingUSD, code))
+    currency = "USD";
+
+  data.currency = currency || data.currencies[0];
+  data.originalCurrency = data.currencies[0];
+
+  return data;
 }
 
 function getSpotifyPrice(link){
