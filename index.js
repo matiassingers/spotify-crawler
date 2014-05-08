@@ -194,7 +194,6 @@ function getCatalogSize(countryCode){
 
   return request(url, true)
     .then(function(data){
-      console.log(countryCode + ' ' + data.info.num_results);
       return data.info.num_results;
     })
     .catch(function(error){
