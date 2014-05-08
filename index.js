@@ -46,11 +46,14 @@ function handleSingleCountry(elem, callback){
 
   country.rel = country.originalRel.split('-')[0];
 
-  var catalogSize = getCatalogSize(country.rel);
-
   // Handle UK edge-case for http://restcountries.eu
-  if(country.rel === 'uk')
+  if(country.rel === 'uk'){
     country.rel = 'gb';
+
+    var catalogSize = getCatalogSize('uk');
+  } else {
+    var catalogSize = getCatalogSize(country.rel);
+  }
 
   var extraCountryData = getCountryData(country.rel);
   var spotifyPrice = getSpotifyPrice(country.link).then(formatSpotifyPrice);
