@@ -18,6 +18,7 @@ $ npm install spotify-crawler
 
 **Methods:**
 - `fetch` - returns `array` with all the countries.
+- `getCatalogSize - takes the two-letter country code, returns `number` of total tracks.
 
 ##### Example:
 ```js
@@ -51,6 +52,7 @@ The `country` object consists of:
 - `originalPrice` - the whole text from the HTML element
 - `price` - strip all text from `originalPrice`
 - `convertedPrice` - local price converted into USD with rate from [Open Exchange Rates](https://openexchangerates.org/)
+- `catalogSize` - amount of tracks available in the country
 
 #### Output data example for a single country:
 ```json

@@ -1,6 +1,6 @@
 {
   "name": "spotify-crawler",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Crawls all international Spotify pages and returns prices for each country.",
   "main": "index.js",
   "scripts": {

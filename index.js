@@ -6,9 +6,7 @@ var when = require('when');
 var async = require('async');
 var format = require('string-format');
 
-exports.fetch = fetchAll;
-
-function fetchAll(){
+function fetchEverything(){
   getLatestCurrencyRates();
 
   return getCountries()
@@ -48,6 +46,8 @@ function handleSingleCountry(elem, callback){
 
   country.rel = country.originalRel.split('-')[0];
 
+  var catalogSize = getCatalogSize(country.rel);
+
   // Handle UK edge-case for http://restcountries.eu
   if(country.rel === 'uk')
     country.rel = 'gb';
@@ -55,13 +55,15 @@ function handleSingleCountry(elem, callback){
   var extraCountryData = getCountryData(country.rel);
   var spotifyPrice = getSpotifyPrice(country.link).then(formatSpotifyPrice);
 
-  when.all([extraCountryData, spotifyPrice])
+  when.all([extraCountryData, spotifyPrice, catalogSize])
     .then(function(data){
       country = _.extend(country, data[0]);
 
       var spotify = data[1];
       country.originalPrice = spotify.original;
       country.price = spotify.formatted;
+
+      country.catalogSize = data[2];
 
       return when.resolve(country);
     })
@@ -182,3 +184,25 @@ function getLatestCurrencyRates(){
       console.log(error);
     });
 }
+
+function getCatalogSize(countryCode){
+  if(countryCode.length !== 2)
+    throw new Error('countryCode has to be in the two-letter(ISO 3166-1 alpha-2) format');
+
+  countryCode = countryCode.toUpperCase();
+  var url = "http://ws.spotify.com/search/1/track.json?q=year:0-3000&country=" + countryCode;
+
+  return request(url, true)
+    .then(function(data){
+      console.log(countryCode + ' ' + data.info.num_results);
+      return data.info.num_results;
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+}
+
+module.exports = {
+  fetch: fetchEverything,
+  getCatalogSize: getCatalogSize
+};
