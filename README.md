@@ -18,7 +18,7 @@ $ npm install spotify-crawler
 
 **Methods:**
 - `fetch` - returns `array` with all the countries.
-- `getCatalogSize - takes the two-letter country code, returns `number` of total tracks.
+- `getCatalogSize` - takes the two-letter country code, returns `number` of total tracks.
 
 ##### Example:
 ```js
@@ -69,7 +69,9 @@ The `country` object consists of:
     "subRegion": "Australia and New Zealand",
     "demonym": "Australian",
     "originalPrice": "$11.99 per month",
-    "price": "11.99"
+    "price": "11.99",
+    "convertedPrice": 11.25280616267109,
+    "catalogSize": 30695608
 }
 ```
 
