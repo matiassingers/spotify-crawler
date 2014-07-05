@@ -200,5 +200,6 @@ function getCatalogSize(countryCode){
 
 module.exports = {
   fetch: fetchEverything,
+  getCountries: getCountries,
   getCatalogSize: getCatalogSize
 };
