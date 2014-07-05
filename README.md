@@ -1,4 +1,4 @@
-# spotify-crawler
+# spotify-crawler [![Build Status](https://api.shippable.com/projects/53b799ea071bb004014fb533/badge/master)](https://www.shippable.com/projects/53b799ea071bb004014fb533)
 > Returns pricing data for all available Spotify countries
 
 [![NPM version](https://badge.fury.io/js/spotify-crawler.svg)](https://www.npmjs.org/package/spotify-crawler)
