@@ -142,14 +142,12 @@ function getSpotifyPrice(link){
 
 function formatSpotifyPrice(price){
   var formattedPrice = price.match(/([1-9](?:\d*)(?:,\d{2})*(?:\.\d*[1-9])?)/g)[0];
-  var formattedPrice = formattedPrice.replace(',', '.');
+  formattedPrice = formattedPrice.replace(',', '.');
 
-  var pricing = {
+  return {
     original: price,
     formatted: formattedPrice
   };
-
-  return pricing;
 }
 
 function convertPriceToUSD(country){
