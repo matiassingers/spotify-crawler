@@ -4,7 +4,7 @@
   "description": "Crawls all international Spotify pages and returns prices for each country.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
