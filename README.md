@@ -77,6 +77,7 @@ The `country` object consists of:
 - Multiple methods
     - *getCountries*
     - *getRawPrices*
+    - ~~*getCatalogSize*~~
     - *etc.*
 - Split up index.js into modules
 - Tests
