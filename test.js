@@ -1,6 +1,7 @@
 'use strict';
 
 var $ = require('cheerio');
+var assert = require('assert');
 var crawler = require('./index');
 
 describe('getCountries()', function(){
