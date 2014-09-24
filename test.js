@@ -5,41 +5,39 @@ var assert = require('assert');
 var crawler = require('./index');
 
 describe('getCountries()', function(){
-  var fetch = crawler.getCountries();
+  this.timeout(0);
+
+  var items;
+  before(function(done) {
+    crawler.getCountries()
+      .then(function(response){
+        items = response;
+
+        done();
+      });
+  });
 
   it('should return array of country items', function(){
-    fetch
-      .then(function(items){
-        assert(items.length);
-      });
+    assert(items.length);
   });
 
   describe('each element should contain the correct attrs', function(){
     it('should have href attr', function(){
-      fetch
-        .then(function(items){
-          var element = $(items[0]);
+      var element = $(items[0]);
 
-          assert(element.attr('href'));
-        });
+      assert(element.attr('href'));
     });
 
     it('should have title attr', function(){
-      fetch
-        .then(function(items){
-          var element = $(items[0]);
+      var element = $(items[0]);
 
-          assert(element.attr('title'));
-        });
+      assert(element.attr('title'));
     });
 
     it('should have rel attr', function(){
-      fetch
-        .then(function(items){
-          var element = $(items[0]);
+      var element = $(items[0]);
 
-          assert(element.attr('rel'));
-        });
+      assert(element.attr('rel'));
     });
   });
 });
