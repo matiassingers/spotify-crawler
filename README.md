@@ -1,4 +1,5 @@
 # spotify-crawler [![Build Status](http://img.shields.io/travis/matiassingers/spotify-crawler.svg?style=flat-square)](https://travis-ci.org/matiassingers/spotify-crawler) [![Dependency Status](http://img.shields.io/gemnasium/matiassingers/spotify-crawler.svg?style=flat-square)](https://gemnasium.com/matiassingers/spotify-crawler)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/matiassingers/spotify-crawler?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 > Returns pricing data for all available Spotify countries
 
 Crawls the [list](https://www.spotify.com/select-your-country/) of countries where Spotify is available.
