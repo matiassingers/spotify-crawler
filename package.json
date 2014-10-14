@@ -36,6 +36,6 @@
     "string-format": "0.2.1"
   },
   "devDependencies": {
-    "mocha": "1.21.4"
+    "mocha": "1.21.5"
   }
 }
